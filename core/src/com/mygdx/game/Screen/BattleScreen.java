@@ -113,6 +113,10 @@ public class BattleScreen extends GameScreen implements EntityObserver {
 		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, map.getMapWidth(), map.getMapHeight());
+		camera.zoom += 0.1f;
+		camera.position.x += 500;
+		camera.position.y += 500;
+		camera.update();
 		
 		mapRenderer = new OrthogonalTiledMapRenderer(mapMgr.getCurrentTiledMap(), Map.UNIT_SCALE);
 		mapRenderer.setView(camera);
@@ -159,7 +163,7 @@ public class BattleScreen extends GameScreen implements EntityObserver {
 	
 	private void renderElements(float delta) {
 		//clear screen
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		renderMap();
