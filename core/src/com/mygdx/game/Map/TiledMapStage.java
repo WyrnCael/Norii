@@ -42,13 +42,11 @@ public class TiledMapStage extends Stage {
 
                 TiledMapActor actor = new TiledMapActor(tiledMap, tiledLayer, cell);
                 
-                //float tilewidth = (float) Gdx.graphics.getWidth() / (float )tiledLayer.getWidth();
-                float tilewidth = Map.TILE_WIDTH_PIXEL;
-                //float tileheight = (float) Gdx.graphics.getHeight() / (float) tiledLayer.getHeight();
-                float tileheight = Map.TILE_HEIGHT_PIXEL;
+                float tilewidth = (float) (Gdx.graphics.getWidth() - tiledMap.uiUnitlistWidth) / (float)tiledLayer.getWidth();
+                float tileheight = (float) (Gdx.graphics.getHeight() - tiledMap.uiBottomMenuHeight) / (float) tiledLayer.getHeight();
                 Gdx.app.debug(TAG, "tilewidth = " + tilewidth + " , and tileheight = " + tileheight);
-                //actor.setBounds(x * tilewidth, y * tileheight, tilewidth,tileheight);
-                actor.setBounds(actor.getX(), actor.getY(), tilewidth,tileheight);
+                actor.setBounds(x * tilewidth, y * tileheight, tilewidth,tileheight);
+                //actor.setBounds(actor.getX(), actor.getY(), tilewidth,tileheight);
                 addActor(actor);
 
                 EventListener eventListener = new TiledMapClickListener(actor);

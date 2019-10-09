@@ -22,6 +22,12 @@ public abstract class Map implements AudioSubject{
     public static int TILE_HEIGHT_PIXEL  = 32;
     public static int TILE_WIDTH_PIXEL  = 32;
     
+    //UI
+    protected int uiUnitlistWidth;
+	protected int uiUnitlistHeight;
+    protected int uiBottomMenuWidth;
+    protected int uiBottomMenuHeight;
+    
     private Array<AudioObserver> _observers;
 
     //Map layers
@@ -84,12 +90,20 @@ public abstract class Map implements AudioSubject{
 		tilePixelWidth = prop.get("tilewidth", Integer.class);
 		tilePixelHeight = prop.get("tileheight", Integer.class);
 		
+		updateUIDimensions();
 		updatePixelDimensions();
     }
+
+	private void updateUIDimensions() {
+		uiUnitlistWidth = 2 * tilePixelWidth;
+	    uiUnitlistHeight  = 20 * tilePixelHeight;
+	    uiBottomMenuWidth  = 20 * tilePixelWidth;
+	    uiBottomMenuHeight  = 3 * tilePixelHeight;
+	}
     
     public void updatePixelDimensions() {
-		TILE_WIDTH_PIXEL = tilePixelWidth;
-		TILE_HEIGHT_PIXEL = tilePixelHeight;
+		TILE_WIDTH_PIXEL = (Gdx.graphics.getWidth() - uiUnitlistWidth) / mapWidth;
+		TILE_HEIGHT_PIXEL = (Gdx.graphics.getHeight() -  uiBottomMenuHeight) / mapHeight;
     }
     
     private void disposeMapAndStage() {
@@ -140,6 +154,22 @@ public abstract class Map implements AudioSubject{
 
 	public void setMapHeight(int mapHeight) {
 		this.mapHeight = mapHeight;
+	}
+	
+    public int getUiUnitlistWidth() {
+		return uiUnitlistWidth;
+	}
+
+	public int getUiUnitlistHeight() {
+		return uiUnitlistHeight;
+	}
+
+	public int getUiBottomMenuWidth() {
+		return uiBottomMenuWidth;
+	}
+
+	public int getUiBottomMenuHeight() {
+		return uiBottomMenuHeight;
 	}
 		
     public MyPathFinder getPathfinder() {

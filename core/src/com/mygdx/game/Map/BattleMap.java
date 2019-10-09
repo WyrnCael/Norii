@@ -78,6 +78,7 @@ public class BattleMap extends Map{
                 TiledMapPosition newPos = new TiledMapPosition(_playerStartPositionRect.x,_playerStartPositionRect.y);
                 startPositions.add(newPos);
                 
+                
                 //tag tiles that can be used as spawns
                 TiledMapActor tiledactor = (TiledMapActor) tiledmapstage.hit(TiledMapPosition.getUpScaledX(_playerStartPositionRect.x), TiledMapPosition.getUpScaledY(_playerStartPositionRect.y), false);
                 tiledactor.setIsFreeSpawn(true);
