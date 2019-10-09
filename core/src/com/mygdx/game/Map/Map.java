@@ -88,8 +88,8 @@ public abstract class Map implements AudioSubject{
     }
     
     public void updatePixelDimensions() {
-		TILE_WIDTH_PIXEL = Gdx.graphics.getWidth() / mapWidth;
-		TILE_HEIGHT_PIXEL = Gdx.graphics.getHeight() / mapHeight;
+		TILE_WIDTH_PIXEL = tilePixelWidth;
+		TILE_HEIGHT_PIXEL = tilePixelHeight;
     }
     
     private void disposeMapAndStage() {

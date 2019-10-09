@@ -159,7 +159,7 @@ public class BattleScreen extends GameScreen implements EntityObserver {
 	
 	private void renderElements(float delta) {
 		//clear screen
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		renderMap();
@@ -167,11 +167,13 @@ public class BattleScreen extends GameScreen implements EntityObserver {
 		//renderGrid();
 		renderParticles(delta);
 		renderHUD(delta);
+		
 		//map.getTiledMapStage().drawActorsDebug();
 		map.drawActorsDebug();
 	}
 
 	private void renderMap() {
+		
 		mapRenderer.setView(camera);
 		map.getTiledMapStage().getViewport().apply();
 		mapRenderer.render();
